@@ -1,0 +1,5 @@
+From: Example Person <example@example.com>
+To: Someone <someone@example.net>
+Subject: Harmless Example Message
+
+This is not a very exciting message, but here it is.
