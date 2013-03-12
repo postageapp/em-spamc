@@ -1,25 +1,21 @@
 require_relative '../helper'
 
 class TestEmSpamcConnection < Test::Unit::TestCase
-  def ztest_ping
+  def test_ping
     eventmachine do
       result = EmSpamc::Connection.ping(connection_options)
 
       assert result
-
-      puts result.inspect
     end
   end
 
-  def xtest_symbols
+  def test_symbols
     eventmachine do
       message = example_message(:sample)
 
       result = EmSpamc::Connection.symbols(message, connection_options)
 
       assert result
-
-      puts result.inspect
     end
   end
 
@@ -30,8 +26,6 @@ class TestEmSpamcConnection < Test::Unit::TestCase
       result = EmSpamc::Connection.report(message, connection_options)
 
       assert result
-
-      puts result.inspect
     end
   end
 end

@@ -36,10 +36,6 @@ class Test::Unit::TestCase
 
   def eventmachine
     EventMachine.run do
-      EventMachine.add_periodic_timer(1) do
-        puts Time.now.to_i
-      end
-
       Fiber.new do
         yield
         EventMachine.stop_event_loop
