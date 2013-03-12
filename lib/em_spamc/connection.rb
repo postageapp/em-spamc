@@ -3,7 +3,7 @@ require 'fiber'
 class EmSpamc::Connection < EventMachine::Connection
   # == Constants ============================================================
 
-  PROTO_VERSION = 'SPAMC/1.5'.freeze
+  PROTO_VERSION = 'SPAMC/1.2'.freeze
 
   DEFAULT_OPTIONS = {
     :host => 'localhost',
@@ -69,7 +69,7 @@ class EmSpamc::Connection < EventMachine::Connection
       send_data("#{@command} #{PROTO_VERSION}\r\n")
       
       if (@message)
-        send_data("Content-Length: #{@message.bytesize}\r\n")
+        send_data("Content-length: #{@message.length}\r\n")
         send_data("\r\n")
         send_data(@message)
       else
@@ -81,15 +81,12 @@ class EmSpamc::Connection < EventMachine::Connection
   def receive_data(data)
     @data ||= ''
     @data << data
-
-    puts data.inspect
   end
 
   def unbind
-    puts "UB"
     result = EmSpamc::Result.new
 
-    @data.split("\r\n").each do |line|
+    @data and @data.split("\r\n").each do |line|
       if (line.match(/^SPAMD\/(\d+\.\d+) (.*)/))
         result.version = $1
         code, message = $2.split(/\s+/)
@@ -101,7 +98,7 @@ class EmSpamc::Connection < EventMachine::Connection
 
         case (header)
         when 'Spam'
-          result.spam = value.split(/\s+/)[0]
+          # result.spam = value.split(/\s+/)[0]
         end
       end
     end

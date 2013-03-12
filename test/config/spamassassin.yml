@@ -1,2 +1,4 @@
+#host: 127.0.0.1
+#port: 9000
 host: scan1.blue.postageapp.com
 port: 49000
