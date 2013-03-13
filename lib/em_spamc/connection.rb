@@ -86,9 +86,7 @@ class EmSpamc::Connection < EventMachine::Connection
 
   def unbind
     result = EmSpamc::Result.new
-
-    p @data
-
+    
     @data and @data.split("\r\n").each do |line|
       if (line.match(/^SPAMD\/(\d+\.\d+) (.*)/))
         result.version = $1
