@@ -67,9 +67,9 @@ class EmSpamc::Connection < EventMachine::Connection
       @fiber.resume
     else
       send_data("#{@command} #{PROTO_VERSION}\r\n")
-      
+
       if (@message)
-        send_data("Content-length: #{@message.length}\r\n")
+        send_data("Content-length: #{@message.bytesize}\r\n")
         send_data("\r\n")
         send_data(@message)
       else
@@ -97,7 +97,6 @@ class EmSpamc::Connection < EventMachine::Connection
       elsif (line.match(/^(\S+): (.*)\s;\s([0-9].[0-9])/))
         result.spam = $2 == 'True'
         result.score = $3.to_f
-        p result
       end
     end
 
