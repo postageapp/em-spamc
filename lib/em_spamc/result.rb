@@ -18,10 +18,6 @@ class EmSpamc::Result
     @attributes = attributes || { }
   end
 
-  def spam?
-    @attributes and @attributes[:score] > @attributes[:threshold]
-  end
-
   ATTRIBUTES.each do |name|
     define_method(name) do
       @attributes[name]
