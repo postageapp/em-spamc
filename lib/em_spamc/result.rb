@@ -8,7 +8,8 @@ class EmSpamc::Result
     :score,
     :threshold,
     :tags,
-    :report
+    :report,
+    :spam
   ].freeze
 
   # == Instance Methods =====================================================

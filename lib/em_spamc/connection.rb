@@ -90,16 +90,14 @@ class EmSpamc::Connection < EventMachine::Connection
       if (line.match(/^SPAMD\/(\d+\.\d+) (.*)/))
         result.version = $1
         code, message = $2.split(/\s+/)
-
+        
         result.code = code.match(/\d/) ? code.to_i : code
-        result.message = message
-      elsif (line.match(/^(\S+): (.*)/))
-        header, value = $1, $2
-
-        case (header)
-        when 'Spam'
-          # result.spam = value.split(/\s+/)[0]
-        end
+        result.message = message        
+        result.report = EmSpamc::ReportParser.parse(@data) if @command == 'REPORT'
+      elsif (line.match(/^(\S+): (.*)\s;\s([0-9].[0-9])/))
+        result.spam = $2 == 'True'
+        result.score = $3.to_f
+        p result
       end
     end
 
