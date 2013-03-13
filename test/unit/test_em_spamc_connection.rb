@@ -26,6 +26,15 @@ class TestEmSpamcConnection < Test::Unit::TestCase
       result = EmSpamc::Connection.report(message, connection_options)
 
       assert result
+      assert result.report
+    end
+  end
+
+  def test_check
+    eventmachine do
+      message = example_message(:sample)
+      result = EmSpamc::Connection.check(message)
+      assert result
     end
   end
 end
