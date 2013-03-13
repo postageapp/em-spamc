@@ -1,4 +1,5 @@
 require 'fiber'
+require 'eventmachine'
 
 class EmSpamc::Connection < EventMachine::Connection
   # == Constants ============================================================

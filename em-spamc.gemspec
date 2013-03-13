@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Scott Tadman"]
-  s.date = "2013-03-12"
+  s.date = "2013-03-13"
   s.description = "Implementation of the \"spamc\" protocol for EventMachine"
   s.email = "github@tadman.ca"
   s.extra_rdoc_files = [
@@ -22,9 +22,12 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
+    "VERSION",
+    "em-spamc.gemspec",
     "lib/em-spamc.rb",
     "lib/em_spamc.rb",
     "lib/em_spamc/connection.rb",
+    "lib/em_spamc/report_parser.rb",
     "lib/em_spamc/result.rb",
     "test/config/spamassassin.yml",
     "test/config/spamassassin.yml.example",
