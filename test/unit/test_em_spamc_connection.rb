@@ -27,6 +27,8 @@ class TestEmSpamcConnection < Test::Unit::TestCase
 
       assert result
       assert result.report
+      assert result.score
+      assert (result.spam != nil)
     end
   end
 
