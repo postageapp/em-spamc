@@ -87,18 +87,9 @@ class EmSpamc::Connection < EventMachine::Connection
   def unbind
     result = EmSpamc::Result.new
     
-    @data and @data.split("\r\n").each do |line|
-      if (line.match(/^SPAMD\/(\d+\.\d+) (.*)/))
-        result.version = $1
-        code, message = $2.split(/\s+/)
-        
-        result.code = code.match(/\d/) ? code.to_i : code
-        result.message = message        
-        result.report = EmSpamc::ReportParser.parse(@data) if @command == 'REPORT'
-      elsif (line.match(/^(\S+): (.*)\s;\s([0-9]*.[0-9]*)/))
-        result.spam = $2 == 'True'
-        result.score = $3.to_f
-      end
+    if @data
+      result.headers = EmSpamc::HeaderParser.parse(@data)
+      result.report = EmSpamc::ReportParser.parse(@data) if @command == 'REPORT'
     end
 
     @fiber.resume(result)

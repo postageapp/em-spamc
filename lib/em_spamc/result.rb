@@ -2,14 +2,10 @@ class EmSpamc::Result
   # == Constants ============================================================
 
   ATTRIBUTES = [
-    :version,
-    :code,
-    :message,
-    :score,
+    :headers,
     :threshold,
     :tags,
-    :report,
-    :spam
+    :report
   ].freeze
 
   # == Instance Methods =====================================================
@@ -26,5 +22,9 @@ class EmSpamc::Result
     define_method(:"#{name}=") do |value|
       @attributes[name] = value
     end
+  end
+
+  def spam?
+    headers[:spam] if headers
   end
 end

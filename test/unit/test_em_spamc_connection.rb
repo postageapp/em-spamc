@@ -4,7 +4,6 @@ class TestEmSpamcConnection < Test::Unit::TestCase
   def test_ping
     eventmachine do
       result = EmSpamc::Connection.ping(connection_options)
-
       assert result
     end
   end
@@ -12,9 +11,7 @@ class TestEmSpamcConnection < Test::Unit::TestCase
   def test_symbols
     eventmachine do
       message = example_message(:sample)
-
       result = EmSpamc::Connection.symbols(message, connection_options)
-
       assert result
     end
   end
@@ -27,8 +24,9 @@ class TestEmSpamcConnection < Test::Unit::TestCase
 
       assert result
       assert result.report
-      assert result.score
-      assert (result.spam != nil)
+      assert result.headers[:score]
+
+      assert_equal result.spam?, false
     end
   end
 
