@@ -1,4 +1,5 @@
 require 'fiber'
+require 'eventmachine'
 
 class EmSpamc::Connection < EventMachine::Connection
   # == Constants ============================================================
@@ -8,7 +9,7 @@ class EmSpamc::Connection < EventMachine::Connection
   DEFAULT_OPTIONS = {
     :host => 'localhost',
     :port => 783
-  }
+  }.freeze
 
   # == Properties ===========================================================
 
@@ -67,9 +68,9 @@ class EmSpamc::Connection < EventMachine::Connection
       @fiber.resume
     else
       send_data("#{@command} #{PROTO_VERSION}\r\n")
-      
+
       if (@message)
-        send_data("Content-length: #{@message.length}\r\n")
+        send_data("Content-length: #{@message.bytesize}\r\n")
         send_data("\r\n")
         send_data(@message)
       else
@@ -86,20 +87,12 @@ class EmSpamc::Connection < EventMachine::Connection
   def unbind
     result = EmSpamc::Result.new
 
-    @data and @data.split("\r\n").each do |line|
-      if (line.match(/^SPAMD\/(\d+\.\d+) (.*)/))
-        result.version = $1
-        code, message = $2.split(/\s+/)
+    if (@data)
+      result.headers = EmSpamc::HeaderParser.parse(@data)
 
-        result.code = code.match(/\d/) ? code.to_i : code
-        result.message = message
-      elsif (line.match(/^(\S+): (.*)/))
-        header, value = $1, $2
-
-        case (header)
-        when 'Spam'
-          # result.spam = value.split(/\s+/)[0]
-        end
+      case (@command)
+      when 'REPORT'
+        result.report = EmSpamc::ReportParser.parse(@data)
       end
     end
 

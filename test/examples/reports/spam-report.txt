@@ -1,0 +1,27 @@
+SPAMD/1.1 0 EX_OK
+Spam: True ; 18.1 / 5.0
+
+Spam detection software, running on the system "scan1.blue.postageapp.com", has
+identified this incoming email as possible spam.  The original message
+has been attached to this so you can view it (if it isn't spam) or label
+similar future email.  If you have any questions, see
+the administrator of that system for details.
+
+Content preview:  I found a way to "get even" with the financial market! I've
+   stumbled to this page: http://advertismenmore.com/ This dude is just crazy,
+   he will teach you how you can make up to $87 every minute! No string attached
+   and zero risk for you! and the best fact, its 100% free [...]
+
+Content analysis details:   (18.1 points, 5.0 required)
+
+ pts rule name              description
+---- ---------------------- --------------------------------------------------
+ 3.6 RCVD_IN_PBL            RBL: Received via a relay in Spamhaus PBL
+                            [91.115.88.37 listed in zen.spamhaus.org]
+ 0.7 RCVD_IN_XBL            RBL: Received via a relay in Spamhaus XBL
+ 0.0 RCVD_IN_DNSWL_BLOCKED  RBL: ADMINISTRATOR NOTICE: The query to DNSWL
+                            was blocked.  See
+                            http://wiki.apache.org/spamassassin/DnsBlocklists#dnsbl-block
+                             for more information.
+                            [91.115.88.37 listed in list.dnswl.org]
+ 1.6 RCVD_IN_BRBL_LASTEXT   RBL: RCVD_IN_BRBL_LASTEXT

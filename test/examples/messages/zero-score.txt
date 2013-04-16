@@ -1,0 +1,23 @@
+Delivered-To: test@test.com
+Received: by 10.180.189.141 with SMTP id gi13csp63398wic;
+        Thu, 14 Mar 2013 08:46:03 -0700 (PDT)
+Return-Path: <sender@testapp.com>
+Received: from outbound6.mailer.testapp.com (outbound6.mailer.testapp.com. [199.87.247.245])
+        by mx.google.com with ESMTPS id ep2si2060874qeb.27.2013.03.14.08.46.02
+        (version=TLSv1 cipher=RC4-SHA bits=128/128);
+        Thu, 14 Mar 2013 08:46:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sender@testapp.com designates 199.87.247.245 as permitted sender) client-ip=199.87.247.245;
+Authentication-Results: mx.google.com;
+       spf=pass (google.com: domain of sender@testapp.com designates 199.87.247.245 as permitted sender) smtp.mail=sender@testapp.com
+Date: Thu, 14 Mar 2013 15:46:02 +0000
+To: person@test.com
+Message-ID: <17ee1aab2074416831081825744deffb026f0dfe@outbound6.mailer.testapp.com>
+Subject: Test Message RECIPIENT SUBJECT person@test.com
+Mime-Version: 1.0
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+Auto-Submitted: auto-generated
+From: sender@testapp.com
+
+Hey!
+

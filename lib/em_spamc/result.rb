@@ -2,10 +2,7 @@ class EmSpamc::Result
   # == Constants ============================================================
 
   ATTRIBUTES = [
-    :version,
-    :code,
-    :message,
-    :score,
+    :headers,
     :threshold,
     :tags,
     :report
@@ -17,10 +14,6 @@ class EmSpamc::Result
     @attributes = attributes || { }
   end
 
-  def spam?
-    @attributes and @attributes[:score] > @attributes[:threshold]
-  end
-
   ATTRIBUTES.each do |name|
     define_method(name) do
       @attributes[name]
@@ -29,5 +22,9 @@ class EmSpamc::Result
     define_method(:"#{name}=") do |value|
       @attributes[name] = value
     end
+  end
+
+  def spam?
+    headers and headers[:spam]
   end
 end

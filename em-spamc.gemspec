@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Scott Tadman"]
-  s.date = "2013-03-12"
+  s.date = "2013-04-16"
   s.description = "Implementation of the \"spamc\" protocol for EventMachine"
   s.email = "github@tadman.ca"
   s.extra_rdoc_files = [
@@ -22,22 +22,32 @@ Gem::Specification.new do |s|
     "LICENSE.txt",
     "README.md",
     "Rakefile",
+    "VERSION",
+    "em-spamc.gemspec",
     "lib/em-spamc.rb",
     "lib/em_spamc.rb",
     "lib/em_spamc/connection.rb",
+    "lib/em_spamc/header_parser.rb",
+    "lib/em_spamc/report_parser.rb",
     "lib/em_spamc/result.rb",
     "test/config/spamassassin.yml",
     "test/config/spamassassin.yml.example",
+    "test/examples/messages/sample.txt",
+    "test/examples/messages/zero-score.txt",
+    "test/examples/reports/spam-report.txt",
+    "test/examples/reports/zero-report.txt",
     "test/examples/sample.txt",
     "test/helper.rb",
     "test/unit/test_em_spamc.rb",
     "test/unit/test_em_spamc_connection.rb",
+    "test/unit/test_em_spamc_header_parser.rb",
+    "test/unit/test_em_spamc_report_parser.rb",
     "test/unit/test_em_spamc_result.rb"
   ]
   s.homepage = "http://github.com/twg/em-spamc"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.23"
+  s.rubygems_version = "1.8.25"
   s.summary = "SpamAssassin Connection for EventMachine"
 
   if s.respond_to? :specification_version then

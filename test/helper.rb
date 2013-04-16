@@ -9,6 +9,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
+require 'yaml'
 require 'test/unit'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
@@ -19,7 +20,13 @@ require 'eventmachine'
 
 class Test::Unit::TestCase
   def example_message(name)
-    message_path = File.expand_path("examples/#{name}.txt", File.dirname(__FILE__))
+    message_path = File.expand_path("examples/messages/#{name}.txt", File.dirname(__FILE__))
+
+    File.open(message_path).read
+  end
+
+  def example_report(name)
+    message_path = File.expand_path("examples/reports/#{name}.txt", File.dirname(__FILE__))
 
     File.open(message_path).read
   end
