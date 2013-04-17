@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Scott Tadman"]
-  s.date = "2013-04-16"
+  s.authors = ["Scott Tadman", "Stephan Leroux"]
+  s.date = "2013-04-17"
   s.description = "Implementation of the \"spamc\" protocol for EventMachine"
   s.email = "github@tadman.ca"
   s.extra_rdoc_files = [

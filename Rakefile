@@ -22,7 +22,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{SpamAssassin Connection for EventMachine}
   gem.description = %Q{Implementation of the "spamc" protocol for EventMachine}
   gem.email = "github@tadman.ca"
-  gem.authors = [ "Scott Tadman" ]
+  gem.authors = [ "Scott Tadman", "Stephan Leroux" ]
   # dependencies defined in Gemfile
 end
 
