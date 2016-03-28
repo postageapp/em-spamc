@@ -60,6 +60,8 @@ class EmSpamc::Connection < EventMachine::Connection
     @fiber = options[0]
     @command = options[1]
     @message = options[2] && (options[2].gsub(/\r?\n/, "\r\n") + "\r\n")
+    @error = nil
+    @data = nil
   end
 
   # EventMachine hook that's engaged after the client is initialized.
